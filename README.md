@@ -27,4 +27,5 @@
 При этом обновляются поля: LastMessage и LastMessageID
 3. Создание **handler'a**:
 > Bot.CreateHandler("MESSAGE", FUNCTION)
+
 При получении сообщения **'MESSAGE'** будет выполнятся функция **'FUNCTION()'** с аргументом в виде полученного сообщения в строчном формате.
