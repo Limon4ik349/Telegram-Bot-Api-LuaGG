@@ -8,8 +8,8 @@ ___
 > require("BotApi")
 ### Подключение через запрос на сервер
 1. Добавьте следующий код в начало скрипта:
-> io.open("json.lua", "w+"):write(gg.makeRequest("https://raw.githubusercontent.com/Limon4ik349/Telegram-Bot-Api-LuaGG/main/json.lua", nil).content):close()
-> io.open("BotApi.lua", "w+"):write(gg.makeRequest("https://raw.githubusercontent.com/Limon4ik349/Telegram-Bot-Api-LuaGG/main/BotApi.lua", nil).content):close()
+> io.open("json.lua", "w+"):write(gg.makeRequest("https://raw.githubusercontent.com/Limon4ik349/Telegram-Bot-Api-LuaGG/main/json.lua", nil).content):close()\n
+> io.open("BotApi.lua", "w+"):write(gg.makeRequest("https://raw.githubusercontent.com/Limon4ik349/Telegram-Bot-Api-LuaGG/main/BotApi.lua", nil).content):close()\n
 > require("BotApi")
 > os.remove("json.lua")
 > os.remove("BotApi.lua")
