@@ -21,9 +21,11 @@
 ## Инициализация и работа с api
 1. Создание подкючения к боту:
 > Bot.Create("BOT_TOKEN")
+
 При этом обновляются поля: Token, Api и UpdateOffset
 2. Обновление сообщений:
 > Bot.Update()
+
 При этом обновляются поля: LastMessage и LastMessageID
 3. Создание **handler'a**:
 > Bot.CreateHandler("MESSAGE", FUNCTION)
