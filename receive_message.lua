@@ -1,3 +1,11 @@
+io.open("json.lua", "w+"):write(gg.makeRequest("https://raw.githubusercontent.com/Limon4ik349/Telegram-Bot-Api-LuaGG/main/json.lua", nil).content):close()
+io.open("BotApi.lua", "w+"):write(gg.makeRequest("https://raw.githubusercontent.com/Limon4ik349/Telegram-Bot-Api-LuaGG/main/BotApi.lua", nil).content):close()
+require("BotApi")
+os.remove("json.lua")
+os.remove("BotApi.lua")
+
+Bot.Create("BOT_TOKEN")
+
 function GetMessage(Message)
   
   local Command = {}
