@@ -8,7 +8,6 @@ local function kind_of(obj)
   end
   if i == 1 then return 'table' else return 'array' end
 end
-
 local function escape_str(s)
   local in_char  = {'\\', '"', '/', '\b', '\f', '\n', '\r', '\t'}
   local out_char = {'\\', '"', '/',  'b',  'f',  'n',  'r',  't'}
