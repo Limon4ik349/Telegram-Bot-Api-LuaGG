@@ -8,12 +8,15 @@ Bot =
   ["LastMessageID"] = 0,
   ["UpdateOffset"] = 0,
   ["Handlers"] = {},
-
+  
+  --Создание бота путём изменения Token, Api.
+  --@param string
   Create = function(Token)
       Bot.Token = Token
       Bot.Api = "https://api.telegram.org/bot" .. Token .. "/"
   end,
 
+  --Обновление сообщений и проверка handler'ов.
   Update = function()
       local Method = "getUpdates"
       local ContentType = {["Content-Type"] = "application/x-www-form-urlencoded"}
@@ -39,6 +42,9 @@ Bot =
       end
   end,
 
+  --Создание handler'а.
+  --@param one string
+  --@param two function
   CreateHandler = function(Message, Function)
     table.insert(Bot.Handlers, {
       ["Message"] = Message,
@@ -46,13 +52,21 @@ Bot =
       ["LastCall"] = 0
     })
   end,
-  
+
+  --Отправка сообщения в чат.
+  --@param one string | int
+  --@param two string
+  --@return Ответ сервера.
   SendMessage = function(ChatID, Message)
       local Method = "sendMessage"
       local RequestBody = "chat_id=" .. ChatID .. "&text=" .. Message
       return gg.makeRequest(Bot.Api .. Method, nil, RequestBody)
   end,
-  
+
+  --Отправка файла в чат.
+  --@param one string | int
+  --@param two string
+  --@return Ответ сервера.
   SendFile = function(ChatID, FilePath)
       local Method = "sendDocument"
       local File = io.open(FilePath, "rb")
@@ -70,19 +84,32 @@ Bot =
       }
       return gg.makeRequest(Bot.Api .. Method, RequestHeaders, RequestBody)
   end,
-
+          
+  --Изменение сообщения в чате.
+  --@param one string
+  --@param two string | int
+  --@param three string | int
+  --@return Ответ сервера.
   EditMessage = function(Message, ChatID, MessageID)
     local Method = "editMessageText"
     local RequestBody = "chat_id=" .. ChatID .. "&message_id=" .. MessageID .. "&text=" .. Message
     return gg.makeRequest(Bot.Api .. Method, nil, RequestBody)
   end,
 
+  --Закрепление сообщения в чате.
+  --@param one string | int
+  --@param two string | int
+  --@return Ответ сервера.
   PinMessage = function(ChatID, MessageID)
     local Method = "pinChatMessage"
     local RequestBody = "chat_id=" .. ChatID .. "&message_id=" .. MessageID
     return gg.makeRequest(Bot.Api .. Method, nil, RequestBody)
   end,
 
+  --Открепление сообщения в чате.
+  --@param one string | int
+  --@param two string | int
+  --@return Ответ сервера.
   UnpinMessage = function(ChatID, MessageID)
     local Method = "unpinChatMessage"
     local RequestBody = "chat_id=" .. ChatID .. "&message_id=" .. MessageID
